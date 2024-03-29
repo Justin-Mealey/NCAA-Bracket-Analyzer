@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Game from "./Game.js"
+import "./Bracket.css"
 
 export default function Bracket() {
 
@@ -13,9 +14,16 @@ export default function Bracket() {
     function handleResult(id, winner){
         let newResults = [...results];
         let oldWinner = results[id];
+        if(oldWinner === winner){
+            return;
+        }
         newResults[id] = winner;
         //any game impacted by change gets properly reset, user must update bracket with new winner
         let i = id;
+        if(i === 0){ //deciding new champion, avoid looping, no further games
+            setResults(newResults);
+            return;
+        }
         while (true){
             i = Math.floor((i-1)/2);
             let nextRoundWinner = results[i];
@@ -31,7 +39,10 @@ export default function Bracket() {
 
     const navigate = useNavigate();
     return (<>
-        <button className="analyzeButton" onClick={() => navigate('/results')}>Analyze<br/>Bracket</button>
+        <div className="championContainer">
+            <div className="champBox">Champion:<br/>{results[0]}</div>
+            <button className="analyzeButton" onClick={() => navigate('/results')}>Analyze<br/>Bracket</button>
+        </div>
         <Championship id={0} picks={results} handlePick={handleResult}></Championship>
     </>)
 }
@@ -39,50 +50,43 @@ export default function Bracket() {
 function Championship({id, picks, handlePick}){
     return(<>
         <FinalFour id={2*id+1} picks={picks} handlePick={handlePick}></FinalFour>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <FinalFour id={2*id+2} picks={picks} handlePick={handlePick}></FinalFour>
+        <Game top={picks[2*id+1]} bottom={picks[2*id+2]} id={id} handleWinner={handlePick}></Game>
     </>)
 }
+
 
 function FinalFour({id, picks, handlePick}){
     return (<>
         <EliteEight id={2*id+1} picks={picks} handlePick={handlePick}></EliteEight>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <EliteEight id={2*id+2} picks={picks} handlePick={handlePick}></EliteEight>
+        <Game top={picks[2*id+1]} bottom={picks[2*id+2]} id={id} handleWinner={handlePick}></Game>
     </>)
 }
 
 function EliteEight({id, picks, handlePick}){
     return(<>
         <SweetSixteen id={2*id+1} picks={picks} handlePick={handlePick}></SweetSixteen>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <SweetSixteen id={2*id+2} picks={picks} handlePick={handlePick}></SweetSixteen>
+        <Game top={picks[2*id+1]} bottom={picks[2*id+2]} id={id} handleWinner={handlePick}></Game>
     </>)
 }
-
 
 function SweetSixteen({id, picks, handlePick}){
 
     return(<>
         <Roundof32 id={2*id+1} picks={picks} handlePick={handlePick}></Roundof32>
-        <br/><br/><br/><br/>
         <Roundof32 id={2*id+2} picks={picks} handlePick={handlePick}></Roundof32>
-        <div style={{ marginLeft: '100px', marginTop: '-160px'}}>
         <Game top={picks[2*id+1]} bottom={picks[2*id+2]} id={id} handleWinner={handlePick}></Game>
-        </div>
     </>)
 }
-
 
 function Roundof32({id, picks, handlePick}){
     
     return(<>
         <Roundof64 id={2*id+1} picks={picks} handlePick={handlePick}></Roundof64>
-        <br/><br/><br/>
         <Roundof64 id={2*id+2} picks={picks} handlePick={handlePick}></Roundof64>
-        <div style={{ marginLeft: '50px', marginTop: '-120px'}}>
         <Game top={picks[2*id+1]} bottom={picks[2*id+2]} id={id} handleWinner={handlePick}></Game>
-        </div>
     </>)
 }
 

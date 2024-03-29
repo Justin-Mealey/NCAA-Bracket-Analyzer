@@ -1,0 +1,21 @@
+.championContainer {
+    position: absolute;
+    top: 590px;
+    right: 50%; 
+}
+.champBox {
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    position: relative;
+    left: 20px;
+}
+.analyzeButton {
+    width: 100px;
+    height: 40px;
+    position: relative;
+    left: 22px;
+    top: 10px;
+}
