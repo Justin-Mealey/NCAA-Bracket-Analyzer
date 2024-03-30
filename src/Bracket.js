@@ -38,10 +38,18 @@ export default function Bracket() {
     }
 
     const navigate = useNavigate();
+    let resultsButton;
+    if(results.includes(null)){ //bracket not fully filled out
+        resultsButton = <button className="analyzeButton">Analyze<br/>Bracket</button>
+    }
+    else{
+        resultsButton = <button className="analyzeButton" onClick={() => navigate('/results')}>Analyze<br/>Bracket</button>
+    }
+
     return (<>
         <div className="championContainer">
             <div className="champBox">Champion:<br/>{results[0]}</div>
-            <button className="analyzeButton" onClick={() => navigate('/results')}>Analyze<br/>Bracket</button>
+            {resultsButton}
         </div>
         <Championship id={0} picks={results} handlePick={handleResult}></Championship>
     </>)
