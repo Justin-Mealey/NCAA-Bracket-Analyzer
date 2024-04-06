@@ -4,7 +4,7 @@ import Game from "./Game.js"
 import "./Bracket.css"
 
 export default function Bracket() {
-
+    
     let initialResults = [];
     for (let i = 0; i < 63; i++){
         switch(i){
@@ -60,6 +60,7 @@ export default function Bracket() {
                 initialResults.push([null, null, null]);
         }
     }
+
     const[results, setResults] = useState(initialResults);
 
     function handleResult(id, winner){
@@ -92,13 +93,18 @@ export default function Bracket() {
                     newResults[(nextGameID-1)/2][1] = null; 
                 }
                 else {
-                    if(nextGameID !== 0){ 
+                    if (nextGameID !== 0){ 
                         newResults[(nextGameID-2)/2][2] = null; 
                     }
                 }
 
                 nextGameID = Math.floor((nextGameID-1)/2); //recurse on next game
                 if (nextGameID <= 0){
+                    if (nextGameID === 0){
+                        if (newResults[0][0] === oldWinner){
+                            newResults[0][0] = null;
+                        }
+                    }
                     break;
                 }
             }
@@ -115,20 +121,30 @@ export default function Bracket() {
     let resultsButton;
     let flattenedResults = [].concat(...results)
     if(flattenedResults.includes(null)){ //bracket not fully filled out
-        resultsButton = <button className="analyzeButton">Analyze<br/>Bracket</button>
+        resultsButton = <div/>
     }
     else{
         resultsButton = <button className="analyzeButton" onClick={() => navigate('/results', {state:{data:results}})}>
             Analyze<br/>Bracket</button>
     }
 
-    return (<>
+    return (
+    <>
+        <div className="title">
+            Welcome to the Ultimate Bracketology Resource
+        </div>
+        <br/>
+        <div className="subtitle">
+            1) Fill in your bracket completely <br/>
+            2) Analyze your bracket and review your results
+        </div>
         <div className="championContainer">
             <div className="champBox">Champion:<br/>{results[0][0]}</div>
             {resultsButton}
         </div>
         <Championship id={0} picks={results} handlePick={handleResult}></Championship>
-    </>)
+    </>
+    )
 }
 
 function Championship({id, picks, handlePick}){

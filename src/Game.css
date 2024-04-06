@@ -1,6 +1,62 @@
-button {
+.glow-on-hover {
     width: 30px;
-    height: 30px; 
+    height: 30px;
+    border: none;
+    outline: none;
+    color: white;
+    background: #206dd8;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 5px;
+    
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #003366, #005b96, #0072bc, #0088cc, #33b5e5, #66cfff, #99dfff, #cce5ff, #e5f2ff);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.glow-on-hover:active {
+    color: #206dd8
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #206dd8;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+    border: 1.5px solid black;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 
 /*TOP LEFT*/
@@ -9,105 +65,105 @@ button {
     flex-direction: column;
     position: absolute;
     top: 10px;
-    left: 10px; 
+    left: 20px; 
 }
 .game32 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 80px;
-    left: 10px; 
+    left: 20px; 
 }
 .game33 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 150px;
-    left: 10px; 
+    left: 20px; 
 }
 .game34 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 220px;
-    left: 10px; 
+    left: 20px; 
 }
 .game35 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 290px;
-    left: 10px; 
+    left: 20px; 
 }
 .game36 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 360px;
-    left: 10px; 
+    left: 20px; 
 }
 .game37 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 430px;
-    left: 10px; 
+    left: 20px; 
 }
 .game38 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 500px;
-    left: 10px; 
+    left: 20px; 
 }
 .game15 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 45px;
-    left: 50px; 
+    left: 100px; 
 }
 .game16 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 185px;
-    left: 50px; 
+    left: 100px; 
 }
 .game17 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 325px;
-    left: 50px; 
+    left: 100px; 
 }
 .game18 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 465px;
-    left: 50px; 
+    left: 100px; 
 }
 .game7 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 115px;
-    left: 100px; 
+    left: 200px; 
 }
 .game8 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 395px;
-    left: 100px; 
+    left: 200px; 
 }
 .game3 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 255px;
-    left: 150px; 
+    left: 300px; 
 }
 /*TOP LEFT*/
 
@@ -117,105 +173,105 @@ button {
     flex-direction: column;
     position: absolute;
     top: 600px;
-    left: 10px; 
+    left: 20px; 
 }
 .game40 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 670px;
-    left: 10px; 
+    left: 20px; 
 }
 .game41 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 740px;
-    left: 10px; 
+    left: 20px; 
 }
 .game42 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 810px;
-    left: 10px; 
+    left: 20px; 
 }
 .game43 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 880px;
-    left: 10px; 
+    left: 20px; 
 }
 .game44 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 950px;
-    left: 10px; 
+    left: 20px; 
 }
 .game45 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1020px;
-    left: 10px; 
+    left: 20px; 
 }
 .game46 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1090px;
-    left: 10px; 
+    left: 20px; 
 }
 .game19 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 635px;
-    left: 50px; 
+    left: 100px; 
 }
 .game20 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 775px;
-    left: 50px; 
+    left: 100px; 
 }
 .game21 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 915px;
-    left: 50px; 
+    left: 100px; 
 }
 .game22 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1055px;
-    left: 50px; 
+    left: 100px; 
 }
 .game9 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 705px;
-    left: 100px; 
+    left: 200px; 
 }
 .game10 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 985px;
-    left: 100px; 
+    left: 200px; 
 }
 .game4 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 845px;
-    left: 150px; 
+    left: 300px; 
 }
 /*BOTTOM LEFT*/
 
@@ -225,105 +281,105 @@ button {
     flex-direction: column;
     position: absolute;
     top: 10px;
-    right: 10px; 
+    right: 20px; 
 }
 .game48 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 80px;
-    right: 10px; 
+    right: 20px; 
 }
 .game49 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 150px;
-    right: 10px; 
+    right: 20px; 
 }
 .game50 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 220px;
-    right: 10px; 
+    right: 20px; 
 }
 .game51 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 290px;
-    right: 10px; 
+    right: 20px; 
 }
 .game52 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 360px;
-    right: 10px; 
+    right: 20px; 
 }
 .game53 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 430px;
-    right: 10px; 
+    right: 20px; 
 }
 .game54 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 500px;
-    right: 10px; 
+    right: 20px; 
 }
 .game23 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 45px;
-    right: 50px; 
+    right: 100px; 
 }
 .game24 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 185px;
-    right: 50px; 
+    right: 100px; 
 }
 .game25 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 325px;
-    right: 50px; 
+    right: 100px; 
 }
 .game26 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 465px;
-    right: 50px; 
+    right: 100px; 
 }
 .game11 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 115px;
-    right: 100px; 
+    right: 200px; 
 }
 .game12 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 395px;
-    right: 100px; 
+    right: 200px; 
 }
 .game5 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 255px;
-    right: 150px; 
+    right: 300px; 
 }
 /*TOP RIGHT*/
 
@@ -333,105 +389,105 @@ button {
     flex-direction: column;
     position: absolute;
     top: 600px;
-    right: 10px; 
+    right: 20px; 
 }
 .game56 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 670px;
-    right: 10px; 
+    right: 20px; 
 }
 .game57 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 740px;
-    right: 10px; 
+    right: 20px; 
 }
 .game58 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 810px;
-    right: 10px; 
+    right: 20px; 
 }
 .game59 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 880px;
-    right: 10px; 
+    right: 20px; 
 }
 .game60 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 950px;
-    right: 10px; 
+    right: 20px; 
 }
 .game61 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1020px;
-    right: 10px; 
+    right: 20px; 
 }
 .game62 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1090px;
-    right: 10px; 
+    right: 20px; 
 }
 .game27 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 635px;
-    right: 50px; 
+    right: 100px; 
 }
 .game28 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 775px;
-    right: 50px; 
+    right: 100px; 
 }
 .game29 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 915px;
-    right: 50px; 
+    right: 100px; 
 }
 .game30 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 1055px;
-    right: 50px; 
+    right: 100px; 
 }
 .game13 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 705px;
-    right: 100px; 
+    right: 200px; 
 }
 .game14 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 985px;
-    right: 100px; 
+    right: 200px; 
 }
 .game6 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 845px;
-    right: 150px; 
+    right: 300px; 
 }
 /*BOTTOM RIGHT*/
 
@@ -441,14 +497,14 @@ button {
     flex-direction: column;
     position: absolute;
     top: 550px;
-    left: 200px; 
+    left: 440px; 
 }
 .game2 {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 550px;
-    right: 200px; 
+    right: 500px; 
 }
 .game0 {
     display: flex;

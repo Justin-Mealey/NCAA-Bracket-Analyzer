@@ -7,3 +7,23 @@
 .container > * {
     padding:1rem;
 }
+
+body{
+    background-color: #242428;
+    padding-bottom: 100px;
+    color: rgb(91, 140, 255);
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+h2{
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+p{
+    text-align: center;
+    font-family: Arial, sans-serif;
+}

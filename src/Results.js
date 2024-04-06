@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./Results.css"
 
 export default function Results() {
@@ -48,17 +48,17 @@ export default function Results() {
         let words;
         if (7 <= severeUpsets && severeUpsets <= 10){
             status = "good";
-            words = severeUpsets + " severe upsets";
+            words = severeUpsets + " total severe upsets";
         }
         else if (5 <= severeUpsets && severeUpsets <= 12){
             score -= 3;
             status = "mid";
-            words = severeUpsets + " severe upsets, for best score pick 7 to 10";
+            words = severeUpsets + " total severe upsets, for best score pick 7 to 10";
         }
         else {
             score -= 6;
             status = "bad";
-            words = severeUpsets + " severe upsets, for best score pick 7 to 10";
+            words = severeUpsets + " total severe upsets, for best score pick 7 to 10";
         }
 
         return {
@@ -79,17 +79,17 @@ export default function Results() {
         let words;
         if (17 <= upsets && upsets <= 23){
             status = "good";
-            words = upsets + " upsets";
+            words = upsets + " total upsets";
         }
         else if (14 <= upsets && upsets <= 26){
             score -= 3;
             status = "mid";
-            words = upsets + " upsets, for best score pick 17 to 23";
+            words = upsets + " total upsets, for best score pick 17 to 23";
         }
         else {
             score -= 6;
             status = "bad";
-            words = upsets + " upsets, for best score pick 17 to 23";
+            words = upsets + " total upsets, for best score pick 17 to 23";
         }
 
         return {
@@ -383,11 +383,13 @@ export default function Results() {
     results.push(stat9());
     results.push(stat10());
 
+    const navigate = useNavigate();
+
     return (<>
         <div>
-            <h1>Your Results:<br/>{score}%</h1>
-            <p>A severe upset is defined as the winning team being at least 5 seeds lower, 
-                whereas a normal upset is at least 1 seed lower.
+            <h1>Bracket Score:<br/>{score}%</h1>
+            <p>*Note: A severe upset is defined as the winning team being at least 5 seeds lower, 
+                whereas a normal upset is at least 1 seed lower.*
             </p>
         </div>
         <div className="container">
